@@ -134,7 +134,10 @@ function Header() {
           <a href="#nasil-calisir" onClick={close}>Nasıl çalışır?</a>
           <a href="#sss" onClick={close}>S.S.S.</a>
           <a className="nav-cta" href="#randevu" onClick={close}>Randevu al <ArrowRight size={16} /></a>
-          <a className="instagram-link" href={business.instagram} target="_blank" rel="noopener noreferrer" aria-label="SafPak Instagram hesabı"><InstagramIcon /><span>Instagram</span></a>
+          <div className="nav-socials" aria-label="Sosyal medya ve iletişim bağlantıları">
+            <a className="social-link instagram-link" href={business.instagram} target="_blank" rel="noopener noreferrer" aria-label="SafPak Instagram hesabı"><InstagramIcon /><span>Instagram</span></a>
+            <a className="social-link whatsapp-link" href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer" aria-label="SafPak WhatsApp hattı"><WhatsAppIcon /><span>WhatsApp</span></a>
+          </div>
         </nav>
         <button className="menu-button" onClick={() => setOpen(!open)} aria-label={open ? 'Menüyü kapat' : 'Menüyü aç'} aria-expanded={open}>
           {open ? <X /> : <Menu />}
@@ -347,7 +350,7 @@ function Booking() {
             <label><span>Ad Soyad *</span><input name="name" required placeholder="Adınız Soyadınız" /></label>
             <label><span>Telefon *</span><input name="phone" required inputMode="tel" placeholder="05xx xxx xx xx" /></label>
             <label><span>Hizmet *</span><select name="service" required defaultValue="Koltuk Yıkama"><option>Koltuk Yıkama</option><option>Yatak Yıkama</option><option>Halı Yıkama</option></select></label>
-            <label><span>Tarih tercihi</span><input name="date" type="date" min={today} /></label>
+            <label className="date-field"><span>Tarih tercihi</span><span className="date-control"><input name="date" type="date" min={today} aria-label="Tercih edilen randevu tarihi" /><CalendarDays size={19} /></span></label>
             <label className="full"><span>Adres / Bölge *</span><input name="address" required placeholder="İlçe / Mahalle" /></label>
             <label className="full"><span>Ek not</span><textarea name="note" rows="3" placeholder="Leke türü, ürün adedi veya paylaşmak istediğiniz detaylar" /></label>
           </div>

@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#041722" />
     <meta name="description" content="SafPak; Avcılar, Esenyurt, Beylikdüzü ve çevresinde profesyonel koltuk, yatak ve halı yıkama hizmeti sunar. WhatsApp'tan randevu alın." />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="author" content="SafPak Temizlik Hizmetleri" />
     <meta name="geo.region" content="TR-34" />
     <meta name="geo.placename" content="İstanbul" />
 
     <link rel="canonical" href="https://keremaksoy11.github.io/safpak-temizlik/" />
+    <link rel="alternate" hreflang="tr-TR" href="https://keremaksoy11.github.io/safpak-temizlik/" />
+    <link rel="alternate" hreflang="x-default" href="https://keremaksoy11.github.io/safpak-temizlik/" />
     <link rel="icon" type="image/svg+xml" href="%BASE_URL%assets/safpak-logo.svg" />
     <link rel="manifest" href="%BASE_URL%site.webmanifest" />
     <link rel="preload" as="image" href="%BASE_URL%assets/hero-poster.jpg" fetchpriority="high" />
@@ -22,6 +24,7 @@
     <meta property="og:description" content="İstanbul'da profesyonel koltuk, yatak ve halı yıkama. Hızlı bilgi ve randevu için WhatsApp'tan ulaşın." />
     <meta property="og:url" content="https://keremaksoy11.github.io/safpak-temizlik/" />
     <meta property="og:image" content="https://keremaksoy11.github.io/safpak-temizlik/assets/hero-poster.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1920" />
     <meta property="og:image:height" content="1080" />
     <meta property="og:image:alt" content="SafPak profesyonel temizlik hizmetleri" />
@@ -39,33 +42,73 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "SafPak Temizlik Hizmetleri",
-        "url": "https://keremaksoy11.github.io/safpak-temizlik/",
-        "logo": "https://keremaksoy11.github.io/safpak-temizlik/assets/safpak-logo.svg",
-        "image": "https://keremaksoy11.github.io/safpak-temizlik/assets/hero-poster.jpg",
-        "telephone": "+90 549 534 46 46",
-        "description": "İstanbul'da profesyonel koltuk, yatak ve halı yıkama hizmetleri.",
-        "sameAs": ["https://www.instagram.com/safpaktemizlik/"],
-        "areaServed": [
-          "Avcılar", "Esenyurt", "Beylikdüzü", "Bahçelievler",
-          "Başakşehir", "Gürpınar", "Sefaköy", "Küçükçekmece"
-        ],
-        "openingHoursSpecification": [{
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-          "opens": "09:00",
-          "closes": "22:00"
-        }],
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Temizlik Hizmetleri",
-          "itemListElement": [
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Koltuk Yıkama"}},
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Yatak Yıkama"}},
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Halı Yıkama"}}
-          ]
-        }
+        "@graph": [
+          {
+            "@type": ["LocalBusiness", "ProfessionalService"],
+            "@id": "https://keremaksoy11.github.io/safpak-temizlik/#business",
+            "name": "SafPak Temizlik Hizmetleri",
+            "url": "https://keremaksoy11.github.io/safpak-temizlik/",
+            "logo": "https://keremaksoy11.github.io/safpak-temizlik/assets/safpak-logo.svg",
+            "image": "https://keremaksoy11.github.io/safpak-temizlik/assets/hero-poster.jpg",
+            "telephone": "+90 549 534 46 46",
+            "description": "İstanbul'da profesyonel koltuk, yatak ve halı yıkama hizmetleri.",
+            "sameAs": ["https://www.instagram.com/safpaktemizlik/"],
+            "areaServed": [
+              "Avcılar", "Esenyurt", "Beylikdüzü", "Bahçelievler",
+              "Başakşehir", "Gürpınar", "Sefaköy", "Küçükçekmece"
+            ],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+90 549 534 46 46",
+              "contactType": "customer service",
+              "availableLanguage": "Turkish"
+            },
+            "openingHoursSpecification": [{
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+              "opens": "09:00",
+              "closes": "22:00"
+            }],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Temizlik Hizmetleri",
+              "itemListElement": [
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Koltuk Yıkama"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Yatak Yıkama"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Halı Yıkama"}}
+              ]
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://keremaksoy11.github.io/safpak-temizlik/#website",
+            "url": "https://keremaksoy11.github.io/safpak-temizlik/",
+            "name": "SafPak Temizlik Hizmetleri",
+            "inLanguage": "tr-TR",
+            "publisher": {"@id": "https://keremaksoy11.github.io/safpak-temizlik/#business"}
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://keremaksoy11.github.io/safpak-temizlik/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Koltuklar ne kadar sürede kurur?",
+                "acceptedAnswer": {"@type": "Answer", "text": "Ortam sıcaklığı, hava sirkülasyonu ve kumaş türüne göre değişmekle birlikte güçlü vakumlama sayesinde kuruma süresi mümkün olduğunca kısalır."}
+              },
+              {
+                "@type": "Question",
+                "name": "Hangi lekeler çıkar?",
+                "acceptedAnswer": {"@type": "Answer", "text": "Lekenin türü, yaşı ve daha önce uygulanan ürünler sonucu etkiler. İşlem öncesinde yüzeyi inceler, uygulanabilecek en güvenli yöntemi açıkça paylaşırız."}
+              },
+              {
+                "@type": "Question",
+                "name": "Temizlik evde mi yapılıyor?",
+                "acceptedAnswer": {"@type": "Answer", "text": "Koltuk ve yatak temizliği adresinizde gerçekleştirilir. Halılarınızı adresinizden teslim alır, profesyonel temizliğin ardından yeniden adresinize teslim ederiz."}
+              }
+            ]
+          }
+        ]
       }
     </script>
   </head>
