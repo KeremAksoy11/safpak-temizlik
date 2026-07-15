@@ -1,0 +1,19 @@
+{
+  "name": "SafPak Temizlik Hizmetleri",
+  "short_name": "SafPak",
+  "description": "İstanbul'da profesyonel koltuk, yatak ve halı yıkama hizmetleri.",
+  "lang": "tr",
+  "start_url": "/safpak-temizlik/",
+  "scope": "/safpak-temizlik/",
+  "display": "standalone",
+  "background_color": "#041722",
+  "theme_color": "#041722",
+  "icons": [
+    {
+      "src": "/safpak-temizlik/assets/safpak-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
