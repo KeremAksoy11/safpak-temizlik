@@ -240,7 +240,7 @@ button { cursor: pointer; }
   .menu-button { display: block; }
   .main-nav { position: absolute; left: 14px; right: 14px; top: 72px; display: grid; gap: 0; padding: 12px; color: white; background: rgba(4,23,34,.98); border: 1px solid rgba(255,255,255,.1); border-radius: 17px; box-shadow: 0 20px 50px rgba(0,0,0,.3); opacity: 0; transform: translateY(-10px); visibility: hidden; transition: .25s; }
   .main-nav.is-open { opacity: 1; transform: none; visibility: visible; }
-  .main-nav a:not(.nav-cta) { display: block; padding: 14px 12px; }
+  .main-nav > a:not(.nav-cta):not(.instagram-link) { display: block; padding: 14px 12px; }
   .main-nav .nav-cta { margin-top: 7px; justify-content: center; }
   .main-nav .instagram-link { width: auto; height: auto; display: flex; justify-content: center; gap: 8px; margin-top: 8px; padding: 12px; border-radius: 999px; }
   .main-nav .instagram-link span { display: inline; }
