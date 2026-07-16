@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://keremaksoy11.github.io/safpak-temizlik/sitemap.xml
+Sitemap: https://safpaktemizlik.com/sitemap.xml

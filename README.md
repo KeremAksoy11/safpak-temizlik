@@ -4,7 +4,7 @@ React + Vite ile hazırlanmış, mobil uyumlu tek sayfalık tanıtım ve randevu
 
 ## Canlı site
 
-[https://keremaksoy11.github.io/safpak-temizlik/](https://keremaksoy11.github.io/safpak-temizlik/)
+[https://safpaktemizlik.com/](https://safpaktemizlik.com/)
 
 ## Çalıştırma
 
@@ -23,7 +23,7 @@ npm run build
 
 ## SEO
 
-Projede sayfa başlığı ve açıklaması, canonical URL, Open Graph ve Twitter kartları, `LocalBusiness` yapılandırılmış verisi, `robots.txt`, `sitemap.xml` ve web manifesti bulunur. Gerçek alan adına geçildiğinde `index.html`, `public/robots.txt`, `public/sitemap.xml` ve `public/site.webmanifest` içindeki geçici GitHub Pages adresleri yeni alan adıyla değiştirilmelidir.
+Projede sayfa başlığı ve açıklaması, canonical URL, Open Graph ve Twitter kartları, `LocalBusiness`, `ProfessionalService`, `WebSite` ve `FAQPage` yapılandırılmış verileri, `robots.txt`, `sitemap.xml` ve web manifesti bulunur. Tüm SEO adresleri `https://safpaktemizlik.com/` alan adını kullanır.
 
 ## İletişim bilgilerini ekleme
 
