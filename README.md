@@ -45,4 +45,8 @@ Tarayıcıdan kullanıcı onayı olmadan otomatik WhatsApp mesajı gönderilemez
 
 ## Hero videosu
 
-Ana bölümdeki 3840×2160 (4K), 25 FPS video `public/assets/hero-4k.mp4`, poster görseli ise `public/assets/hero-poster.jpg` dosyasıdır. Video bileşeni `src/App.jsx` içinde bu dosyaya bağlıdır. Kaynak: [Pexels — A Person Using a Vacuum](https://www.pexels.com/video/a-person-using-a-vacuum-6197558/).
+Ana bölümdeki 1920×1080, 25 FPS H.264 video `public/assets/hero-sofa-cleaning.mp4`, poster görseli ise `public/assets/hero-sofa-poster.jpg` dosyasıdır. Web için optimize edilen video yaklaşık 3,3 MB boyutundadır. Kaynak ve zorunlu atıf: [Waravut Pramapong / Vecteezy](https://www.vecteezy.com/video/3735691-asian-man-cleaning-sofa-with-a-vacuum-cleaner-in-the-living-room-at-home).
+
+## Hizmet görselleri
+
+`hali-profesyonel.jpg`, `yorgan-battaniye.jpg` ve `stor-perde.jpg` görselleri bu proje için yapay zekâ ile özgün olarak üretildi ve web kullanımına göre optimize edildi.

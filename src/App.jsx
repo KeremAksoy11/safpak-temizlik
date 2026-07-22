@@ -3,12 +3,14 @@ import {
   ArrowDown,
   ArrowRight,
   BedDouble,
+  Blinds,
   CalendarDays,
   Check,
   ChevronDown,
   Clock3,
   Droplets,
   Leaf,
+  Layers3,
   MapPin,
   Menu,
   MessageCircle,
@@ -23,28 +25,43 @@ import {
 import { business, getWhatsAppUrl } from './config'
 
 const asset = (fileName) => `${import.meta.env.BASE_URL}assets/${fileName}`
+const appointmentUrl = getWhatsAppUrl('Merhaba SafPak, randevu oluşturmak istiyorum.')
 
 const services = [
   {
+    title: 'Halı Yıkama',
+    kicker: 'Adresten alım ve teslim',
+    text: 'Halılarınızı adresinizden teslim alıyor, profesyonel tesisimizde özenle yıkayıp kuruttuktan sonra tekrar adresinize teslim ediyoruz. Fiyatlar 80 TL/m²’den başlamaktadır.',
+    image: asset('hali-profesyonel.jpg'),
+    icon: Droplets,
+  },
+  {
     title: 'Koltuk Yıkama',
-    kicker: 'Derinlemesine bakım',
-    text: 'Kumaş türüne uygun ürünler ve sıcak su ekstraksiyonuyla lekeleri, kiri ve kötü kokuları dokunun derininden arındırıyoruz.',
+    kicker: 'Yerinde profesyonel temizlik',
+    text: 'Koltuklarınız adresinizde, profesyonel Kärcher Puzzi 10/1 koltuk yıkama makinesi ve özel temizlik ürünleri kullanılarak detaylı şekilde temizlenir. İşlem; koltuğun durumuna göre ortalama 2–4 saat sürmektedir. Temizlik sonrasında, deterjan kalıntısı bırakmamak ve yeniden kirlenmeyi önlemek için durulama (ekstraksiyon) işlemi uygulanır. Böylece koltuklarınız hem hijyenik hem de kalıntısız şekilde temizlenmiş olur. Fiyatlar 1.700 TL’den başlamaktadır.',
     image: asset('koltuk.jpg'),
     icon: Sparkles,
   },
   {
     title: 'Yatak Yıkama',
-    kicker: 'Ferah bir uyku',
-    text: 'Yatak yüzeyindeki toz, alerjen ve lekeleri profesyonel yöntemlerle temizliyor; yaşam alanınıza hijyenik bir tazelik kazandırıyoruz.',
+    kicker: 'Güvenli derin temizlik',
+    text: 'Yataklarınız adresinizde, profesyonel ekipmanlarla derinlemesine temizlenir. İşlem sırasında sağlığa zarar verebilecek ağır kimyasallar kullanılmaz; kumaşa uygun ve güvenli temizlik ürünleri tercih edilir. Hijyenik ve özenli temizlik hizmeti sunuyoruz. Tek kişilik yatak yıkama 1.000 TL’den, çift kişilik yatak yıkama 1.500 TL’den başlayan fiyatlarla.',
     image: asset('yatak.jpg'),
     icon: BedDouble,
   },
   {
-    title: 'Halı Yıkama',
+    title: 'Yorgan & Battaniye Yıkama',
+    kicker: 'Hijyenik yıkama ve paketleme',
+    text: 'Ev tekstil ürünleriniz profesyonel yöntemlerle derinlemesine temizlenir, hijyenik ortamda kurutularak özenle paketlenir ve adresinize teslim edilir. Fiyatlar ürünün ölçüsüne göre değişmektedir.',
+    image: asset('yorgan-battaniye.jpg'),
+    icon: Layers3,
+  },
+  {
+    title: 'Stor Perde Yıkama',
     kicker: 'Adresten alım ve teslim',
-    text: 'Halılarınızı adresinizden teslim alıyor; dokusuna uygun profesyonel yöntemlerle temizleyip yeniden adresinize teslim ediyoruz.',
-    image: asset('hali.jpg'),
-    icon: Droplets,
+    text: 'Stor perdeleriniz adresinizden özenle alınır, kumaşına uygun profesyonel yıkama işlemlerinden geçirilerek hijyenik şekilde temizlenir. Kurutma ve kalite kontrolünün ardından temiz ve kullanıma hazır olarak tekrar adresinize teslim edilir. Fiyatlar 90 TL/m²’den başlayan fiyatlarla sunulmaktadır.',
+    image: asset('stor-perde.jpg'),
+    icon: Blinds,
   },
 ]
 
@@ -133,7 +150,7 @@ function Header() {
           <a href="#neden-biz" onClick={close}>Neden SafPak?</a>
           <a href="#nasil-calisir" onClick={close}>Nasıl çalışır?</a>
           <a href="#sss" onClick={close}>S.S.S.</a>
-          <a className="nav-cta" href="#randevu" onClick={close}>Randevu al <ArrowRight size={16} /></a>
+          <a className="nav-cta" href={appointmentUrl} target="_blank" rel="noopener noreferrer" onClick={close}>Randevu al <ArrowRight size={16} /></a>
           <div className="nav-socials" aria-label="Sosyal medya ve iletişim bağlantıları">
             <a className="social-link instagram-link" href={business.instagram} target="_blank" rel="noopener noreferrer" aria-label="SafPak Instagram hesabı"><InstagramIcon /><span>Instagram</span></a>
             <a className="social-link whatsapp-link" href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer" aria-label="SafPak WhatsApp hattı"><WhatsAppIcon /><span>WhatsApp</span></a>
@@ -150,17 +167,17 @@ function Header() {
 function Hero() {
   return (
     <section className="hero" id="top">
-      <video className="hero-video" autoPlay muted loop playsInline preload="metadata" poster={asset('hero-poster.jpg')} aria-hidden="true" tabIndex="-1">
-        <source src={asset('hero-4k.mp4')} type="video/mp4" />
+      <video className="hero-video" autoPlay muted loop playsInline preload="metadata" poster={asset('hero-sofa-poster.jpg')} aria-hidden="true" tabIndex="-1">
+        <source src={asset('hero-sofa-cleaning.mp4')} type="video/mp4" />
       </video>
       <div className="hero-overlay" />
       <div className="hero-grain" />
       <div className="hero-content shell">
         <div className="hero-eyebrow"><span className="pulse-dot" /> Profesyonel yerinde temizlik</div>
         <h1>Evinize gelen<br /><em>SafPak ferahlığı.</em></h1>
-        <p className="hero-lead">İstanbul’da koltuk, yatak ve halılarınız için yüzeye uygun profesyonel bakım. Derinlemesine temizlik, sade bir randevu deneyimi.</p>
+        <p className="hero-lead">İstanbul’da halıdan koltuğa, yataktan ev tekstiline kadar her yüzey için profesyonel bakım. Derinlemesine temizlik, sade bir randevu deneyimi.</p>
         <div className="hero-actions">
-          <a className="button button-primary" href="#randevu">Randevu oluştur <ArrowRight size={18} /></a>
+          <a className="button button-primary" href={appointmentUrl} target="_blank" rel="noopener noreferrer">Randevu oluştur <ArrowRight size={18} /></a>
           <a className="button button-ghost" href="#hizmetler">Hizmetleri incele</a>
         </div>
         <div className="trust-row">
@@ -201,7 +218,7 @@ function Services() {
                 <p className="service-kicker">{kicker}</p>
                 <h3>{title}</h3>
                 <p>{text}</p>
-                <a href="#randevu">Bu hizmet için randevu <ArrowRight size={16} /></a>
+                <a href={getWhatsAppUrl(`Merhaba SafPak, ${title} hizmeti için randevu oluşturmak istiyorum.`)} target="_blank" rel="noopener noreferrer">Bu hizmet için randevu <ArrowRight size={16} /></a>
               </div>
             </article>
           ))}
@@ -250,7 +267,7 @@ function Stats() {
     <div className="stats shell" ref={ref}>
       {[
         ['%100', 'Özenli hizmet'],
-        ['3', 'Uzmanlık alanı'],
+        ['5', 'Hizmet alanı'],
         ['7/7', 'Randevu talebi'],
         ['1', 'Tek kalite standardı'],
       ].map(([value, label], index) => (
@@ -349,7 +366,7 @@ function Booking() {
           <div className="form-grid">
             <label><span>Ad Soyad *</span><input name="name" required placeholder="Adınız Soyadınız" /></label>
             <label><span>Telefon *</span><input name="phone" required inputMode="tel" placeholder="05xx xxx xx xx" /></label>
-            <label><span>Hizmet *</span><select name="service" required defaultValue="Koltuk Yıkama"><option>Koltuk Yıkama</option><option>Yatak Yıkama</option><option>Halı Yıkama</option></select></label>
+            <label><span>Hizmet *</span><select name="service" required defaultValue="Halı Yıkama"><option>Halı Yıkama</option><option>Koltuk Yıkama</option><option>Yatak Yıkama</option><option>Yorgan &amp; Battaniye Yıkama</option><option>Stor Perde Yıkama</option></select></label>
             <label className="date-field"><span>Tarih tercihi</span><span className="date-control"><input name="date" type="date" min={today} aria-label="Tercih edilen randevu tarihi" /><CalendarDays size={19} /></span></label>
             <label className="full"><span>Adres / Bölge *</span><input name="address" required placeholder="İlçe / Mahalle" /></label>
             <label className="full"><span>Ek not</span><textarea name="note" rows="3" placeholder="Leke türü, ürün adedi veya paylaşmak istediğiniz detaylar" /></label>
@@ -388,12 +405,12 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="shell footer-main">
-        <div className="footer-brand"><Logo /><p>Koltuk, yatak ve halılarınız için profesyonel temizlik. Evinize gelen ferah ve özenli hizmet.</p></div>
+        <div className="footer-brand"><Logo /><p>Halı, koltuk, yatak, ev tekstili ve stor perdeleriniz için profesyonel temizlik. Evinize gelen ferah ve özenli hizmet.</p></div>
         <div className="footer-links"><strong>Keşfet</strong><a href="#hizmetler">Hizmetler</a><a href="#neden-biz">Neden SafPak?</a><a href="#nasil-calisir">Nasıl çalışır?</a></div>
         <div className="footer-links"><strong>İletişim</strong><a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer"><WhatsAppIcon size={15} /> {business.phone || 'Telefon eklenecek'}</a><span><MapPin size={15} /> İstanbul hizmet bölgeleri</span><span><Clock3 size={15} /> {business.workingHours}</span>{business.instagram && <a href={business.instagram} target="_blank" rel="noopener noreferrer"><InstagramIcon size={15} /> {business.instagramHandle}</a>}</div>
-        <div className="footer-cta"><span>Temizliğe hazır mısınız?</span><a className="button button-primary" href="#randevu">Randevu oluştur <ArrowRight size={17} /></a></div>
+        <div className="footer-cta"><span>Temizliğe hazır mısınız?</span><a className="button button-primary" href={appointmentUrl} target="_blank" rel="noopener noreferrer">Randevu oluştur <ArrowRight size={17} /></a></div>
       </div>
-      <div className="shell footer-bottom"><span>© {year} SafPak Temizlik Hizmetleri</span><span>Özenle temizler, ferahlıkla teslim ederiz.</span></div>
+      <div className="shell footer-bottom"><span>© {year} SafPak Temizlik Hizmetleri</span><span className="footer-meta"><span>Özenle temizler, ferahlıkla teslim ederiz.</span><a href="https://www.vecteezy.com/video/3735691-asian-man-cleaning-sofa-with-a-vacuum-cleaner-in-the-living-room-at-home" target="_blank" rel="noopener noreferrer">Hero videosu: Waravut Pramapong / Vecteezy</a></span></div>
     </footer>
   )
 }
