@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import {
   ArrowDown,
+  ArrowLeft,
   ArrowRight,
+  BadgeDollarSign,
   BedDouble,
   Blinds,
   CalendarDays,
@@ -9,17 +11,23 @@ import {
   ChevronDown,
   Clock3,
   Droplets,
-  Leaf,
+  HeartHandshake,
   Layers3,
   MapPin,
   Menu,
   MessageCircle,
+  MoveHorizontal,
+  PackageCheck,
   Quote,
+  ScanSearch,
   ShieldCheck,
   Sparkles,
   SprayCan,
   Star,
+  Timer,
+  Truck,
   Wind,
+  Wrench,
   X,
 } from 'lucide-react'
 import { business, getWhatsAppUrl } from './config'
@@ -67,39 +75,132 @@ const services = [
 
 const benefits = [
   {
-    icon: SprayCan,
-    title: 'Derinlemesine Ekstraksiyon',
-    text: 'Profesyonel sistemimiz kiri yüzeyde bırakmaz; kumaşın derininden kontrollü biçimde çeker.',
+    number: '01',
+    icon: BadgeDollarSign,
+    title: 'Şeffaf ve Uygun Fiyatlandırma',
+    text: 'Sürpriz ücretlerle karşılaşmazsınız. Kaliteli hizmeti, bütçenizi zorlamayan fiyatlarla sunuyoruz.',
   },
   {
-    icon: Wind,
-    title: 'Hızlı Kuruma',
-    text: 'Güçlü vakum teknolojisiyle yüzeyde kalan nemi azaltır, kullanım süresini hızlandırırız.',
+    number: '02',
+    icon: Wrench,
+    title: 'Profesyonel Ekipman ve Doğru Yöntem',
+    text: 'Halı, koltuk ve yatak temizliğinde profesyonel makineler ve yüzeye uygun temizlik ürünleri kullanıyor, sadece yüzeyi değil derinlemesine temizlik sağlamayı hedefliyoruz.',
   },
   {
-    icon: Leaf,
-    title: 'Hassas Yaşam Alanlarına Uygun',
-    text: 'Çocuklu ve evcil hayvanlı evler için yüzeye uygun, özenle seçilmiş ürünler kullanırız.',
+    number: '03',
+    icon: ScanSearch,
+    title: 'Tecrübeli ve Titiz Hizmet',
+    text: 'Her ürüne aynı işlemi uygulamıyoruz. Kumaşın yapısına göre en uygun yıkama yöntemini belirleyerek özenli bir temizlik gerçekleştiriyoruz.',
+  },
+  {
+    number: '04',
+    icon: Truck,
+    title: 'Adresten Alım ve Teslim Kolaylığı',
+    text: 'Halı ve stor perdelerinizi adresinizden teslim alıyor, işlemler tamamlandıktan sonra temiz ve kullanıma hazır şekilde tekrar adresinize teslim ediyoruz.',
+  },
+  {
+    number: '05',
+    icon: HeartHandshake,
+    title: 'Müşteri Memnuniyeti Önceliğimizdir',
+    text: 'Amacımız sadece temizlik yapmak değil, hizmetimizden memnun kalmanızı sağlamaktır. İşimizi özenle yapıyor, her müşterimize aynı titizlikle hizmet veriyoruz.',
+  },
+  {
+    number: '06',
+    icon: ShieldCheck,
+    title: 'Güvenilir Hizmet Anlayışı',
+    text: 'Sağlığa uygun temizlik ürünleri, özenli çalışma ve zamanında teslimat ile eşyalarınızı kendi eşyamız gibi koruyoruz.',
   },
 ]
 
 const processSteps = [
-  ['01', 'Bize ulaşın', 'İhtiyacınızı ve uygun olduğunuz zamanı paylaşın.'],
-  ['02', 'Ücretsiz bilgi alın', 'Yüzey, adet ve leke durumuna göre net bir plan oluşturalım.'],
-  ['03', 'SafPak ferahlığı', 'Ekibimiz adresinizde profesyonel temizliği tamamlasın.'],
+  {
+    number: '01',
+    icon: MessageCircle,
+    title: 'Bize Ulaşın',
+    text: 'Telefon, WhatsApp veya web sitemiz üzerinden bizimle iletişime geçin. Hizmet almak istediğiniz ürünleri ve adres bilgilerinizi iletin.',
+  },
+  {
+    number: '02',
+    icon: CalendarDays,
+    title: 'Randevunuzu Oluşturalım',
+    text: 'Size uygun gün ve saat belirlenir. Halı ve stor perdeleriniz adresinizden teslim alınır, koltuk ve yatak yıkama hizmeti ise adresinizde gerçekleştirilir.',
+  },
+  {
+    number: '03',
+    icon: SprayCan,
+    title: 'Profesyonel Temizlik',
+    text: 'Ürünleriniz, türüne uygun profesyonel ekipman ve güvenli temizlik ürünleri kullanılarak özenle temizlenir. Tüm işlemler titizlikle kontrol edilir.',
+  },
+  {
+    number: '04',
+    icon: Wind,
+    title: 'Kurutma ve Kalite Kontrol',
+    text: 'Yıkanan ürünler uygun koşullarda tamamen kurutulur ve teslimattan önce son kalite kontrolünden geçirilir.',
+  },
+  {
+    number: '05',
+    icon: PackageCheck,
+    title: 'Temiz Teslimat',
+    text: 'İşlemleri tamamlanan ürünleriniz temiz, hijyenik ve kullanıma hazır şekilde zamanında adresinize teslim edilir. Memnuniyetiniz bizim için her zaman önceliklidir.',
+  },
 ]
 
 const testimonials = [
-  ['Koltuklarımızın rengi resmen geri geldi. Ekip çok dikkatli ve düzenli çalıştı.', 'Ev temizliği müşterisi'],
-  ['Yatak temizliğinden sonra odanın havası bile değişti. Gönül rahatlığıyla tavsiye ederim.', 'Yatak yıkama müşterisi'],
-  ['Zorlu lekeler için sonuç beklentimin üstündeydi. Hızlı ve çok özenli bir hizmet.', 'Halı yıkama müşterisi'],
-  ['Randevu saatine sadık kaldılar, işlem bittikten sonra her yeri tertemiz bıraktılar.', 'Koltuk yıkama müşterisi'],
+  {
+    rating: 4,
+    service: 'Halı yıkama',
+    text: 'Toplam 8 halı verdim. Bir tanesinde hafif su lekesi kalmıştı. Yazınca hiç uğraştırmadan tekrar gelip aldılar ve ücretsiz yeniden yıkayıp teslim ettiler. Bu ilgileri gerçekten hoşuma gitti.',
+  },
+  {
+    rating: 5,
+    service: 'Koltuk yıkama',
+    text: 'Koltuklarım çocuklardan dolayı oldukça kirliydi. Yaklaşık 3 saat uğraştılar ve sonuç beklediğimden çok daha iyi oldu. Ellerinize sağlık.',
+  },
+  {
+    rating: 5,
+    service: 'Halı yıkama',
+    text: 'İlk defa Saf Pak’ı tercih ettim. Halılar tam söyledikleri gün teslim edildi ve mis gibi kokuyordu. Bundan sonra devam edeceğim.',
+  },
+  {
+    rating: 4,
+    service: 'Stor perde yıkama',
+    text: 'Stor perdelerimi teslim aldılar, birkaç gün içinde tertemiz getirdiler. Küçük bir gecikme oldu ama önceden bilgi verdikleri için sorun yaşamadım.',
+  },
+  {
+    rating: 5,
+    service: 'Yatak yıkama',
+    text: 'Yatak yıkama hizmeti aldım. Kimyasal kokusu kalmaması benim için önemliydi. Temizlikten sonra sadece ferah bir koku vardı, memnun kaldım.',
+  },
+  {
+    rating: 5,
+    service: 'İletişim ve randevu',
+    text: 'WhatsApp’tan yazdım, aynı gün dönüş yaptılar. Randevu saatine tam zamanında geldiler. Hizmetleri kadar iletişimleri de çok iyiydi.',
+  },
+  {
+    rating: 5,
+    service: 'Genel hizmet',
+    text: 'Fiyat araştırması yapmıştım. Hem uygun fiyatlı hem de gerçekten özenli çalışıyorlar. Beklediğimden daha iyi bir hizmet aldım.',
+  },
+  {
+    rating: 4,
+    service: 'Koltuk yıkama',
+    text: 'Koltuğumdaki eski bir leke tamamen çıkmadı ama bunun nedenini önceden açıkladılar. Ellerinden geleni yaptıkları belli oluyordu, dürüst yaklaşımlarını beğendim.',
+  },
+  {
+    rating: 5,
+    service: 'Halı yıkama',
+    text: 'Halılarım paketli şekilde teslim edildi. Temizliği kadar teslimat şekli de çok düzenliydi. Güvenle tavsiye ederim.',
+  },
+  {
+    rating: 5,
+    service: 'İletişim ve teslimat',
+    text: 'İletişimleri çok samimiydi. Sürecin her aşamasında bilgi verdiler ve söyledikleri saatte teslim ettiler. Gönül rahatlığıyla tercih edebilirsiniz.',
+  },
 ]
 
 const faqs = [
-  ['Koltuklar ne kadar sürede kurur?', 'Ortam sıcaklığı, hava sirkülasyonu ve kumaş türüne göre değişmekle birlikte güçlü vakumlama sayesinde kuruma süresi mümkün olduğunca kısalır.'],
-  ['Hangi lekeler çıkar?', 'Lekenin türü, yaşı ve daha önce uygulanan ürünler sonucu etkiler. İşlem öncesinde yüzeyi inceler, uygulanabilecek en güvenli yöntemi açıkça paylaşırız.'],
-  ['Temizlik evde mi yapılıyor?', 'Koltuk ve yatak temizliği adresinizde gerçekleştirilir. Halılarınızı adresinizden teslim alır, profesyonel temizliğin ardından yeniden adresinize teslim ederiz.'],
+  ['Halılarım kaç gün içinde teslim edilir?', 'Halılarınız normal şartlarda 4 gün içerisinde teslim edilir. Nadir de olsa gözden kaçan bir leke tespit edilirse, ücretsiz tekrar yıkama uygulanır. Bu durumda teslim süresi yaklaşık 1 haftaya kadar uzayabilir. Amacımız hızlı değil, temiz teslim etmektir.'],
+  ['Halılar adresimden alınıyor mu?', 'Evet. Halılarınızı belirlediğimiz gün adresinizden teslim alıyor, yıkama ve kurutma işlemleri tamamlandıktan sonra tekrar adresinize teslim ediyoruz.'],
 ]
 
 function Logo() {
@@ -231,25 +332,22 @@ function Services() {
 function Benefits() {
   return (
     <section className="section benefits" id="neden-biz">
-      <div className="shell benefits-grid">
-        <div className="benefits-visual">
-          <img src={asset('puzzi.jpg')} alt="SafPak profesyonel temizlik ekipmanı" width="500" height="380" loading="lazy" decoding="async" />
-          <div className="visual-badge"><strong>Profesyonel</strong><span>ekipman parkuru</span></div>
-          <div className="visual-note"><Sparkles size={18} /><span>Detaylarda<br /><strong>SafPak özeni</strong></span></div>
-        </div>
-        <div className="benefits-content">
-          <SectionHeading eyebrow="Neden SafPak?" title="Sadece temiz görünmez. Temiz hissettirir." text="İyi temizlik; doğru ekipman, yüzey bilgisi ve işi sahiplenmekle başlar." light />
-          <div className="benefit-list">
-            {benefits.map(({ icon: Icon, title, text }) => (
-              <div className="benefit-item" key={title}>
-                <span><Icon size={22} /></span>
-                <div><h3>{title}</h3><p>{text}</p></div>
+      <div className="shell">
+        <SectionHeading eyebrow="Neden SafPak?" title="SafPak’ı tercih etmek için altı güçlü neden." text="Şeffaf fiyatlandırmadan doğru ekipmana, her aşamada güven veren ve özenli bir hizmet anlayışı." light />
+        <div className="benefits-grid">
+          {benefits.map(({ number, icon: Icon, title, text }) => (
+            <article className="benefit-card" key={number}>
+              <div className="benefit-card-top">
+                <span className="benefit-number">{number}</span>
+                <span className="benefit-icon"><Icon size={22} /></span>
               </div>
-            ))}
-          </div>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
         </div>
+        <Stats />
       </div>
-      <Stats />
     </section>
   )
 }
@@ -263,18 +361,30 @@ function Stats() {
     return () => observer.disconnect()
   }, [])
 
+  const stats = [
+    { value: '%93', label: 'Müşteri memnuniyeti', icon: HeartHandshake, featured: true, progress: 93 },
+    { value: '5', label: 'Uzmanlık alanı', icon: Sparkles },
+    { value: '2.000+', label: 'Yıkanan halı sayısı', icon: Droplets },
+    { value: '300+', label: 'Yıkanan koltuk sayısı', icon: SprayCan },
+    { value: '5 gün', label: 'Ortalama teslim süresi', icon: Timer },
+  ]
+
   return (
-    <div className="stats shell" ref={ref}>
-      {[
-        ['%100', 'Özenli hizmet'],
-        ['5', 'Hizmet alanı'],
-        ['7/7', 'Randevu talebi'],
-        ['1', 'Tek kalite standardı'],
-      ].map(([value, label], index) => (
-        <div className={`stat ${active ? 'reveal' : ''}`} style={{ '--delay': `${index * 90}ms` }} key={label}>
-          <strong>{value}</strong><span>{label}</span>
-        </div>
-      ))}
+    <div className="stats-wrap" id="rakamlarla-safpak" ref={ref}>
+      <div className="stats-heading">
+        <div><span>Rakamlarla SafPak</span><h3>Her temizlikte büyüyen güven.</h3></div>
+        <p>Bugüne kadar tamamladığımız işlerden ve hizmet standardımızdan öne çıkan rakamlar.</p>
+      </div>
+      <div className="stats">
+        {stats.map(({ value, label, icon: Icon, featured, progress }, index) => (
+          <article className={`stat ${featured ? 'is-featured' : ''} ${active ? 'reveal' : ''}`} style={{ '--delay': `${index * 90}ms` }} key={label}>
+            <span className="stat-icon"><Icon size={20} /></span>
+            <strong>{value}</strong>
+            <span className="stat-label">{label}</span>
+            {progress && <span className="stat-meter" aria-hidden="true"><i style={{ width: `${progress}%` }} /></span>}
+          </article>
+        ))}
+      </div>
     </div>
   )
 }
@@ -284,17 +394,16 @@ function Process() {
     <section className="section process" id="nasil-calisir">
       <div className="shell">
         <div className="split-heading">
-          <SectionHeading eyebrow="Nasıl çalışır?" title="Temizliğe giden üç sade adım." />
-          <p>Uzun telefon görüşmeleri ve belirsiz süreçler yok. İhtiyacınızı anlayıp uygun çözümü birlikte netleştiriyoruz.</p>
+          <SectionHeading eyebrow="Nasıl çalışır?" title="Temizliğe giden beş net adım." />
+          <p>İlk iletişimden temiz teslimata kadar tüm süreci açık, planlı ve özenli şekilde yönetiyoruz.</p>
         </div>
         <div className="process-grid">
-          {processSteps.map(([number, title, text], index) => (
+          {processSteps.map(({ number, icon: Icon, title, text }) => (
             <article className="process-card" key={number}>
               <span className="process-number">{number}</span>
-              <div className="process-icon">{index === 0 ? <MessageCircle /> : index === 1 ? <CalendarDays /> : <Sparkles />}</div>
+              <div className="process-icon"><Icon /></div>
               <h3>{title}</h3>
               <p>{text}</p>
-              {index < 2 && <ArrowRight className="process-arrow" />}
             </article>
           ))}
         </div>
@@ -304,19 +413,48 @@ function Process() {
 }
 
 function Reviews() {
+  const reviewTrackRef = useRef(null)
+
+  const scrollReviews = (direction) => {
+    const track = reviewTrackRef.current
+    if (!track) return
+    track.scrollBy({ left: direction * Math.min(track.clientWidth * 0.82, 760), behavior: 'smooth' })
+  }
+
   return (
-    <section className="section reviews">
-      <div className="shell">
-        <SectionHeading eyebrow="Müşteri deneyimi" title="Temizlikten sonra kalan iyi his." text="SafPak deneyimini en iyi, hizmeti alanların sözleri anlatır." />
+    <section className="section reviews" id="yorumlar">
+      <div className="shell reviews-heading">
+        <SectionHeading eyebrow="Yorumlar" title="SafPak deneyimini müşterilerimiz anlatıyor." text="Yorumları parmağınızla kaydırabilir veya okları kullanarak tek tek inceleyebilirsiniz." />
+        <div className="review-controls">
+          <span><MoveHorizontal size={18} /> Kaydırarak inceleyin</span>
+          <div>
+            <button type="button" onClick={() => scrollReviews(-1)} aria-label="Önceki yorum"><ArrowLeft size={20} /></button>
+            <button type="button" onClick={() => scrollReviews(1)} aria-label="Sonraki yorum"><ArrowRight size={20} /></button>
+          </div>
+        </div>
       </div>
-      <div className="review-track-wrap">
-        <div className="review-track">
-          {[...testimonials, ...testimonials].map(([text, author], index) => (
-            <article className="review-card" key={`${author}-${index}`}>
-              <Quote size={28} />
-              <div className="stars">{[...Array(5)].map((_, i) => <Star key={i} size={15} fill="currentColor" />)}</div>
+      <div className="shell review-track-wrap">
+        <div
+          className="review-track"
+          ref={reviewTrackRef}
+          role="region"
+          aria-label="Müşteri yorumları"
+          tabIndex={0}
+          onKeyDown={(event) => {
+            if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+              event.preventDefault()
+              scrollReviews(event.key === 'ArrowLeft' ? -1 : 1)
+            }
+          }}
+        >
+          {testimonials.map(({ rating, service, text }, index) => (
+            <article className="review-card" key={`${service}-${index}`} aria-label={`${rating} yıldızlı ${service} yorumu`}>
+              <Quote className="review-quote" size={28} />
+              <div className="stars" aria-label={`${rating} üzerinden 5 yıldız`}>
+                {[...Array(5)].map((_, i) => <Star className={i < rating ? '' : 'is-empty'} key={i} size={16} fill={i < rating ? 'currentColor' : 'none'} />)}
+              </div>
               <p>“{text}”</p>
-              <span>{author}</span>
+              <span className="review-service">{service}</span>
             </article>
           ))}
         </div>
