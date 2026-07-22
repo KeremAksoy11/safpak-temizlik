@@ -7,6 +7,7 @@ import {
   BedDouble,
   Blinds,
   CalendarDays,
+  Camera,
   Check,
   ChevronDown,
   Clock3,
@@ -201,6 +202,26 @@ const testimonials = [
 const faqs = [
   ['Halılarım kaç gün içinde teslim edilir?', 'Halılarınız normal şartlarda 4 gün içerisinde teslim edilir. Nadir de olsa gözden kaçan bir leke tespit edilirse, ücretsiz tekrar yıkama uygulanır. Bu durumda teslim süresi yaklaşık 1 haftaya kadar uzayabilir. Amacımız hızlı değil, temiz teslim etmektir.'],
   ['Halılar adresimden alınıyor mu?', 'Evet. Halılarınızı belirlediğimiz gün adresinizden teslim alıyor, yıkama ve kurutma işlemleri tamamlandıktan sonra tekrar adresinize teslim ediyoruz.'],
+  ['Koltuk yıkama ne kadar sürüyor?', 'Koltuk sayısı ve kirlilik durumuna göre değişmekle birlikte işlem ortalama 2 ila 4 saat sürmektedir. Temizlik sonrasında durulama işlemi de uygulanır.'],
+  ['Kullanılan temizlik ürünleri sağlığa zararlı mı?', 'Hayır. Hizmetlerimizde kumaşa uygun, profesyonel ve sağlığa zarar vermeyecek temizlik ürünleri kullanılmaktadır.'],
+  ['Lekelerin tamamı çıkar mı?', 'Her leke aynı değildir. Yeni oluşmuş lekelerin çıkma ihtimali daha yüksektir. Çok eski, kimyasal veya kumaşa işlemiş lekelerde %100 sonuç garanti edilemez ancak en iyi sonuca ulaşmak için gerekli işlemler uygulanır.'],
+  ['Koltuklar ve yataklar ne zaman kurur?', 'Ortam sıcaklığına ve hava durumuna bağlı olarak ortalama 12-24 saat içerisinde kurur. Yaz aylarında bu süre daha kısa olabilir.'],
+  ['Stor perdeler sökülüp takılıyor mu?', 'Evet. Ricanız doğrultusunda stor perdelerinizi sökme ve tekrar yerine takma konusunda elimizden gelen desteği sağlıyoruz. Amacımız süreci sizin için mümkün olduğunca kolay ve zahmetsiz hale getirmek.'],
+  ['Ödeme ne zaman yapılıyor?', 'Ödemenizi hizmet tamamlandıktan sonra nakit veya banka havalesi/EFT ile güvenle gerçekleştirebilirsiniz.'],
+  ['Memnun kalmazsam ne oluyor?', 'Memnuniyet bizim için önemlidir. Hizmet sonrası gözden kaçan bir durum olması halinde bizimle iletişime geçmeniz yeterlidir. Gerekli kontroller yapılarak uygun görülmesi halinde ücretsiz tekrar işlem uygulanır.'],
+  ['Hangi bölgelere hizmet veriyorsunuz?', 'İstanbul’un hizmet verdiğimiz bölgelerinde adresinizden alım ve teslimat yapıyoruz. Hizmet bölgesi hakkında bilgi almak için bizimle iletişime geçebilirsiniz.'],
+  ['Randevu oluşturmak zor mu?', 'Hayır. Telefon veya WhatsApp üzerinden bize ulaşmanız yeterlidir. Size uygun gün ve saat planlanarak en kısa sürede hizmet sağlanır.'],
+  ['Evde koltuk yıkarken etraf kirlenir mi?', 'Hayır. Profesyonel ekipmanlarımız sayesinde kontrollü bir temizlik yapılır. Çalışma alanı özenle korunur ve işlem sonunda çevre temiz bırakılır.'],
+  ['Hizmet almadan önce evi hazırlamam gerekiyor mu?', 'Hayır. Sadece koltuk veya yatağın etrafındaki küçük eşyaların kaldırılması yeterlidir. Geri kalan hazırlıkları ekibimiz halleder.'],
+  ['Fiyat nasıl belirleniyor?', 'Fiyatlandırma; ürünün türüne, ölçüsüne ve hizmet kapsamına göre belirlenir. İşleme başlamadan önce fiyat bilgisi sizinle paylaşılır, sonradan sürpriz ücret çıkarılmaz.'],
+  ['Sonradan ek ücret talep ediliyor mu?', 'Hayır. Fiyat bilgisi hizmet öncesinde sizinle paylaşılır. Onayınız olmadan sonradan herhangi bir ek ücret talep edilmez.'],
+]
+
+const gallerySlots = [
+  ['01', 'Halı Yıkama'],
+  ['02', 'Koltuk Yıkama'],
+  ['03', 'Yatak Yıkama'],
+  ['04', 'Stor Perde Yıkama'],
 ]
 
 function Logo() {
@@ -250,16 +271,20 @@ function Header() {
           <a href="#hizmetler" onClick={close}>Hizmetler</a>
           <a href="#neden-biz" onClick={close}>Neden SafPak?</a>
           <a href="#nasil-calisir" onClick={close}>Nasıl çalışır?</a>
-          <a href="#sss" onClick={close}>S.S.S.</a>
+          <a href="#galeri" onClick={close}>Galeri</a>
+          <a href="#sss" onClick={close}>Sıkça Sorulan Sorular</a>
           <a className="nav-cta" href={appointmentUrl} target="_blank" rel="noopener noreferrer" onClick={close}>Randevu al <ArrowRight size={16} /></a>
           <div className="nav-socials" aria-label="Sosyal medya ve iletişim bağlantıları">
             <a className="social-link instagram-link" href={business.instagram} target="_blank" rel="noopener noreferrer" aria-label="SafPak Instagram hesabı"><InstagramIcon /><span>Instagram</span></a>
             <a className="social-link whatsapp-link" href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer" aria-label="SafPak WhatsApp hattı"><WhatsAppIcon /><span>WhatsApp</span></a>
           </div>
         </nav>
-        <button className="menu-button" onClick={() => setOpen(!open)} aria-label={open ? 'Menüyü kapat' : 'Menüyü aç'} aria-expanded={open}>
-          {open ? <X /> : <Menu />}
-        </button>
+        <div className="header-mobile-actions">
+          <a className="mobile-instagram" href={business.instagram} target="_blank" rel="noopener noreferrer" aria-label="SafPak Instagram hesabını aç"><InstagramIcon size={20} /></a>
+          <button className="menu-button" onClick={() => setOpen(!open)} aria-label={open ? 'Menüyü kapat' : 'Menüyü aç'} aria-expanded={open}>
+            {open ? <X /> : <Menu />}
+          </button>
+        </div>
       </div>
     </header>
   )
@@ -412,6 +437,28 @@ function Process() {
   )
 }
 
+function Gallery() {
+  return (
+    <section className="section gallery" id="galeri">
+      <div className="shell">
+        <div className="gallery-heading">
+          <SectionHeading eyebrow="Galeri" title="SafPak işlerinden kareler." text="Gerçek uygulama fotoğraflarımızı bu alanda temizlik öncesi ve sonrası görüntülerle paylaşacağız." />
+          <a className="gallery-instagram" href={business.instagram} target="_blank" rel="noopener noreferrer"><InstagramIcon size={19} /> Instagram’da bizi takip edin <ArrowRight size={17} /></a>
+        </div>
+        <div className="gallery-grid" aria-label="Hazırlanan SafPak hizmet galerisi">
+          {gallerySlots.map(([number, title]) => (
+            <article className="gallery-slot" key={title} aria-label={`${title} fotoğraf alanı hazırlanıyor`}>
+              <span className="gallery-number">{number}</span>
+              <span className="gallery-camera"><Camera size={24} /></span>
+              <div><strong>{title}</strong><span>Fotoğraf eklenecek</span></div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function Reviews() {
   const reviewTrackRef = useRef(null)
 
@@ -522,7 +569,11 @@ function FAQ() {
   return (
     <section className="section faq" id="sss">
       <div className="shell faq-grid">
-        <SectionHeading eyebrow="Merak edilenler" title="Aklınızda soru kalmasın." text="Randevu öncesinde en sık karşılaştığımız soruları kısaca yanıtladık." />
+        <div className="faq-intro">
+          <SectionHeading eyebrow="Sıkça Sorulan Sorular" title="Aklınızda soru kalmasın." text="Hizmet öncesinde ve sonrasında en sık karşılaştığımız soruları açıkça yanıtladık." />
+          <div className="faq-summary"><strong>{faqs.length}</strong><span>soruya tek yerde<br />net cevap</span></div>
+          <a href={getWhatsAppUrl('Merhaba SafPak, hizmetleriniz hakkında bir sorum var.')} target="_blank" rel="noopener noreferrer"><WhatsAppIcon size={18} /> Başka bir sorunuz mu var?</a>
+        </div>
         <div className="accordion">
           {faqs.map(([question, answer], index) => (
             <div className={`accordion-item ${open === index ? 'is-open' : ''}`} key={question}>
@@ -544,7 +595,7 @@ function Footer() {
     <footer className="footer">
       <div className="shell footer-main">
         <div className="footer-brand"><Logo /><p>Halı, koltuk, yatak, ev tekstili ve stor perdeleriniz için profesyonel temizlik. Evinize gelen ferah ve özenli hizmet.</p></div>
-        <div className="footer-links"><strong>Keşfet</strong><a href="#hizmetler">Hizmetler</a><a href="#neden-biz">Neden SafPak?</a><a href="#nasil-calisir">Nasıl çalışır?</a></div>
+        <div className="footer-links"><strong>Keşfet</strong><a href="#hizmetler">Hizmetler</a><a href="#neden-biz">Neden SafPak?</a><a href="#nasil-calisir">Nasıl çalışır?</a><a href="#galeri">Galeri</a><a href="#sss">Sıkça Sorulan Sorular</a></div>
         <div className="footer-links"><strong>İletişim</strong><a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer"><WhatsAppIcon size={15} /> {business.phone || 'Telefon eklenecek'}</a><span><MapPin size={15} /> İstanbul hizmet bölgeleri</span><span><Clock3 size={15} /> {business.workingHours}</span>{business.instagram && <a href={business.instagram} target="_blank" rel="noopener noreferrer"><InstagramIcon size={15} /> {business.instagramHandle}</a>}</div>
         <div className="footer-cta"><span>Temizliğe hazır mısınız?</span><a className="button button-primary" href={appointmentUrl} target="_blank" rel="noopener noreferrer">Randevu oluştur <ArrowRight size={17} /></a></div>
       </div>
@@ -571,6 +622,7 @@ export default function App() {
         <Services />
         <Benefits />
         <Process />
+        <Gallery />
         <Reviews />
         <Booking />
         <FAQ />
