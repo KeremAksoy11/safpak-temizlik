@@ -19,6 +19,7 @@ import {
   MessageCircle,
   MoveHorizontal,
   PackageCheck,
+  PhoneCall,
   Quote,
   ScanSearch,
   ShieldCheck,
@@ -31,7 +32,7 @@ import {
   Wrench,
   X,
 } from 'lucide-react'
-import { business, getWhatsAppUrl } from './config'
+import { business, getPhoneUrl, getWhatsAppUrl } from './config'
 
 const asset = (fileName) => `${import.meta.env.BASE_URL}assets/${fileName}`
 const appointmentUrl = getWhatsAppUrl('Merhaba SafPak, randevu oluşturmak istiyorum.')
@@ -539,7 +540,7 @@ function Booking() {
           <h2>Temiz bir başlangıç için ilk adımı atın.</h2>
           <p>Formu doldurun; hizmet detaylarını sizinle birlikte netleştirip uygun randevu zamanını planlayalım.</p>
           <div className="contact-stack">
-            <div><WhatsAppIcon /><span><small>WhatsApp</small><strong>{business.phone || 'Numara eklenecek'}</strong></span></div>
+            <a className="contact-phone" href={getPhoneUrl()} aria-label={`${business.phone} numarasını ara`}><PhoneCall /><span><small>Telefon</small><strong>{business.phone || 'Numara eklenecek'}</strong></span></a>
             <div><MapPin /><span><small>Hizmet bölgesi</small><strong>{business.serviceArea}</strong></span></div>
             <div><Clock3 /><span><small>Çalışma saatleri</small><strong>{business.workingHours}</strong></span></div>
           </div>
@@ -596,7 +597,7 @@ function Footer() {
       <div className="shell footer-main">
         <div className="footer-brand"><Logo /><p>Halı, koltuk, yatak, ev tekstili ve stor perdeleriniz için profesyonel temizlik. Evinize gelen ferah ve özenli hizmet.</p></div>
         <div className="footer-links"><strong>Keşfet</strong><a href="#hizmetler">Hizmetler</a><a href="#neden-biz">Neden SafPak?</a><a href="#nasil-calisir">Nasıl çalışır?</a><a href="#galeri">Galeri</a><a href="#sss">Sıkça Sorulan Sorular</a></div>
-        <div className="footer-links"><strong>İletişim</strong><a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer"><WhatsAppIcon size={15} /> {business.phone || 'Telefon eklenecek'}</a><span><MapPin size={15} /> İstanbul hizmet bölgeleri</span><span><Clock3 size={15} /> {business.workingHours}</span>{business.instagram && <a href={business.instagram} target="_blank" rel="noopener noreferrer"><InstagramIcon size={15} /> {business.instagramHandle}</a>}</div>
+        <div className="footer-links"><strong>İletişim</strong><a href={getPhoneUrl()} aria-label={`${business.phone} numarasını ara`}><PhoneCall size={15} /> {business.phone || 'Telefon eklenecek'}</a><span><MapPin size={15} /> İstanbul hizmet bölgeleri</span><span><Clock3 size={15} /> {business.workingHours}</span>{business.instagram && <a href={business.instagram} target="_blank" rel="noopener noreferrer"><InstagramIcon size={15} /> {business.instagramHandle}</a>}</div>
         <div className="footer-cta"><span>Temizliğe hazır mısınız?</span><a className="button button-primary" href={appointmentUrl} target="_blank" rel="noopener noreferrer">Randevu oluştur <ArrowRight size={17} /></a></div>
       </div>
       <div className="shell footer-bottom"><span>© {year} SafPak Temizlik Hizmetleri</span><span className="footer-meta"><span>Özenle temizler, ferahlıkla teslim ederiz.</span><a href="https://www.vecteezy.com/video/3735691-asian-man-cleaning-sofa-with-a-vacuum-cleaner-in-the-living-room-at-home" target="_blank" rel="noopener noreferrer">Hero videosu: Waravut Pramapong / Vecteezy</a></span></div>

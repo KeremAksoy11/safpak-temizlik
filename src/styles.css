@@ -199,7 +199,9 @@ button { cursor: pointer; }
 .booking-copy h2 { max-width: 500px; }
 .booking-copy > p { max-width: 490px; margin: 24px 0 34px; color: rgba(255,255,255,.62); font-size: 15px; line-height: 1.75; }
 .contact-stack { display: grid; gap: 12px; }
-.contact-stack > div { display: flex; align-items: center; gap: 14px; }
+.contact-stack > div, .contact-stack > a { display: flex; align-items: center; gap: 14px; }
+.contact-phone { width: fit-content; border-radius: 14px; transition: color .2s, transform .2s; }
+.contact-phone:hover { color: var(--lime); transform: translateX(3px); }
 .contact-stack svg { width: 43px; height: 43px; padding: 11px; color: var(--lime); background: rgba(182,237,102,.09); border-radius: 13px; }
 .contact-stack span { display: grid; gap: 2px; }
 .contact-stack small { color: rgba(255,255,255,.7); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }

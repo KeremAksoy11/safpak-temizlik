@@ -13,3 +13,9 @@ export const getWhatsAppUrl = (message = 'Merhaba SafPak, temizlik hizmeti hakkÄ
   if (!business.whatsapp) return '#randevu'
   return `https://wa.me/${business.whatsapp}?text=${encodeURIComponent(message)}`
 }
+
+export const getPhoneUrl = () => {
+  if (!business.phone) return '#randevu'
+  const digits = business.phone.replace(/\D/g, '')
+  return `tel:${digits.startsWith('0') ? `+90${digits.slice(1)}` : `+${digits}`}`
+}
